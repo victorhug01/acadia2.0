@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:navigations/src/app/screens/chat/chat_page.dart';
 import 'package:navigations/src/app/screens/profile/profile_page.dart';
+import 'package:navigations/src/app/screens/register/student/sudent_page.dart';
 import 'package:navigations/src/components/drawer/drawer_component.dart';
 import 'package:navigations/src/components/search/search_bar.dart';
 import 'package:navigations/src/theme/theme_class.dart';
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Acadia',
       theme: ThemeData(
         fontFamily: GoogleFonts.montserrat().fontFamily,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -35,6 +37,12 @@ class NavigationsTabsComponents extends StatefulWidget {
       _NavigationsTabsComponentsState();
 }
 
+final FocusNode _buttonFocusNode = FocusNode(debugLabel: 'Menu Button');
+@override
+void dispose() {
+  _buttonFocusNode.dispose();
+}
+
 class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
   @override
   Widget build(BuildContext context) {
@@ -47,21 +55,72 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
           child: Image.asset('assets/logo.png'),
         ),
         centerTitle: true,
-        title: MediaQuery.of(context).size.width >= 730
-            ? const SizedBox(
-                width: 300,
-                child: TabBar(
-                  tabs: [
-                    Tab(text: "Perfil"),
-                    Tab(text: "Chat"),
-                    Tab(text: "Home"),
-                  ],
-                ),
+        title: MediaQuery.of(context).size.width >= 770
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const SizedBox(
+                    width: 230,
+                    child: TabBar(
+                      tabs: [
+                        Tab(text: "Perfil"),
+                        Tab(text: "Chat"),
+                        Tab(text: "Home"),
+                      ],
+                    ),
+                  ),
+                  MenuAnchor(
+                    childFocusNode: _buttonFocusNode,
+                    style: MenuStyle(
+                      backgroundColor: MaterialStatePropertyAll(
+                        ColorSchemeManagerClass.colorPrimary,
+                      ),
+                    ),
+                    menuChildren: [
+                      MenuItemButton(
+                        child: const Text('Aluno'),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (_) => const StudentPage()));
+                        },
+                      ),
+                      MenuItemButton(
+                        child: const Text('Contratado'),
+                        onPressed: () {},
+                      ),
+                    ],
+                    builder: (BuildContext context, MenuController controller,
+                        Widget? child) {
+                      return TextButton(
+                        style: ButtonStyle(
+                          shape: MaterialStatePropertyAll(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(0),
+                            ),
+                          ),
+                        ),
+                        focusNode: _buttonFocusNode,
+                        onPressed: () {
+                          if (controller.isOpen) {
+                            controller.close();
+                          } else {
+                            controller.open();
+                          }
+                        },
+                        child: const Text('Cadastrar'),
+                      );
+                    },
+                  ),
+                ],
               )
             : null,
         actions: [
-          MediaQuery.of(context).size.width >= 730
-              ? const SearchBarWidget()
+          MediaQuery.of(context).size.width >= 770
+              ? const Padding(
+                  padding: EdgeInsets.only(right: 8.0),
+                  child: SearchBarWidget(),
+                )
               : Builder(
                   builder: (context) {
                     return IconButton(
@@ -87,7 +146,7 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
       body: const TabBarView(
         children: [
           ProfilePage(),
-          Icon(Icons.directions_transit),
+          ChatPage(),
           Icon(Icons.directions_bike),
         ],
       ),
