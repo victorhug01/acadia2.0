@@ -11,7 +11,9 @@ class _RegisterStudentState extends State<RegisterStudent> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Colors.blueAccent,
+      body: Center(
+        child: Text('Student'),
+      ),
     );
   }
 }

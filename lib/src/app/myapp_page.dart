@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:navigations/src/app/screens/chat/chat_page.dart';
 import 'package:navigations/src/app/screens/profile/profile_page.dart';
-import 'package:navigations/src/app/screens/register/student/sudent_page.dart';
+import 'package:navigations/src/app/screens/register/student/student_page.dart';
 import 'package:navigations/src/components/drawer/drawer_component.dart';
 import 'package:navigations/src/components/search/search_bar.dart';
 import 'package:navigations/src/theme/theme_class.dart';
@@ -20,11 +20,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const DefaultTabController(
+      home: MediaQuery.sizeOf(context).width >= 770
+      ? const DefaultTabController(
         initialIndex: 0,
         length: 3,
         child: NavigationsTabsComponents(),
-      ),
+      ) :const NavigationsTabsComponents(),
     );
   }
 }
@@ -73,16 +74,26 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
                   MenuAnchor(
                     childFocusNode: _buttonFocusNode,
                     style: MenuStyle(
-                      backgroundColor: WidgetStatePropertyAll(
+                      backgroundColor: MaterialStatePropertyAll(
                         ColorSchemeManagerClass.colorPrimary,
                       ),
                     ),
                     menuChildren: [
                       MenuItemButton(
-                        child: Text(
-                          'Aluno',
-                          style: TextStyle(
+                        child: Container(
+                          decoration: BoxDecoration(
                             color: ColorSchemeManagerClass.colorSecondary,
+                            borderRadius: BorderRadius.circular(5)
+                          ),
+                          
+                          padding: const EdgeInsets.all(4),
+                          child: SizedBox(
+                            child: Text(
+                              'Estudante',
+                              style: TextStyle(
+                                color: ColorSchemeManagerClass.colorPrimary,
+                              ),
+                            ),
                           ),
                         ),
                         onPressed: () {
@@ -91,10 +102,18 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
                         },
                       ),
                       MenuItemButton(
-                        child: Text(
-                          'Contratado',
-                          style: TextStyle(
+                        child: Container(
+                          decoration: BoxDecoration(
                             color: ColorSchemeManagerClass.colorSecondary,
+                            borderRadius: BorderRadius.circular(5)
+                          ),
+                          
+                          padding: const EdgeInsets.all(4),
+                          child: Text(
+                            'Contratado',
+                            style: TextStyle(
+                              color: ColorSchemeManagerClass.colorPrimary,
+                            ),
                           ),
                         ),
                         onPressed: () {},
@@ -104,14 +123,14 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
                         Widget? child) {
                       return TextButton(
                         style: ButtonStyle(
-                          shape: WidgetStatePropertyAll(
+                          shape: MaterialStatePropertyAll(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(0),
                             ),
                           ),
                         ),
                         focusNode: _buttonFocusNode,
-                        onPressed: () {
+                        onPressed: (){
                           if (controller.isOpen) {
                             controller.close();
                           } else {
@@ -153,13 +172,15 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
           ),
         ),
       ),
-      body: const TabBarView(
+      body: MediaQuery.sizeOf(context).width >= 770
+      ? const TabBarView(
         children: [
           ProfilePage(),
           ChatPage(),
           Icon(Icons.directions_bike),
         ],
-      ),
+      ) :
+      const ProfilePage()
     );
   }
 }

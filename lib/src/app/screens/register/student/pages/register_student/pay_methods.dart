@@ -11,7 +11,9 @@ class _PayMethodsState extends State<PayMethods> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Colors.red,
+      body: Center(
+        child: Text('Pay'),
+      ),
     );
   }
 }

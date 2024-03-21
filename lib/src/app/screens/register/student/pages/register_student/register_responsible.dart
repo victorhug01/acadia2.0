@@ -11,7 +11,9 @@ class _RegisterResponsibleStudentState extends State<RegisterResponsibleStudent>
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Colors.green,
+      body: Center(
+        child: Text('Responsible'),
+      ),
     );
   }
 }
