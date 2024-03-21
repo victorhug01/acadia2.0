@@ -37,7 +37,7 @@ class NavigationsTabsComponents extends StatefulWidget {
       _NavigationsTabsComponentsState();
 }
 
-final FocusNode _buttonFocusNode = FocusNode(debugLabel: 'Menu Button');
+final FocusNode _buttonFocusNode = FocusNode(debugLabel: 'Botão menu');
 @override
 void dispose() {
   _buttonFocusNode.dispose();
@@ -73,7 +73,7 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
                   MenuAnchor(
                     childFocusNode: _buttonFocusNode,
                     style: MenuStyle(
-                      backgroundColor: MaterialStatePropertyAll(
+                      backgroundColor: WidgetStatePropertyAll(
                         ColorSchemeManagerClass.colorPrimary,
                       ),
                     ),
@@ -104,7 +104,7 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
                         Widget? child) {
                       return TextButton(
                         style: ButtonStyle(
-                          shape: MaterialStatePropertyAll(
+                          shape: WidgetStatePropertyAll(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(0),
                             ),

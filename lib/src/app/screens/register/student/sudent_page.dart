@@ -38,13 +38,13 @@ class _StudentPageState extends State<StudentPage> {
                     height: 80.0,
                     child: ElevatedButton(
                       style: ButtonStyle(
-                        elevation: const MaterialStatePropertyAll(0.0),
-                        shape: MaterialStatePropertyAll(
+                        elevation: const WidgetStatePropertyAll(0.0),
+                        shape: WidgetStatePropertyAll(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14.0),
                           ),
                         ),
-                        side: MaterialStatePropertyAll(
+                        side: WidgetStatePropertyAll(
                           BorderSide(
                             color: ColorSchemeManagerClass.colorPrimary,
                             width: 3.0,
@@ -69,10 +69,10 @@ class _StudentPageState extends State<StudentPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text('9854321874'),
-                              SizedBox(width: 20.0),
-                              Text('2º ano'),
-                              SizedBox(width: 20.0),
+                              const Text('9854321874'),
+                              const SizedBox(width: 20.0),
+                              const Text('2º ano'),
+                              const SizedBox(width: 20.0),
                               Text(index.toString()),
                             ],
                           )
