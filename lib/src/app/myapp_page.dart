@@ -79,14 +79,24 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
                     ),
                     menuChildren: [
                       MenuItemButton(
-                        child: const Text('Aluno'),
+                        child: Text(
+                          'Aluno',
+                          style: TextStyle(
+                            color: ColorSchemeManagerClass.colorSecondary,
+                          ),
+                        ),
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (_) => const StudentPage()));
                         },
                       ),
                       MenuItemButton(
-                        child: const Text('Contratado'),
+                        child: Text(
+                          'Contratado',
+                          style: TextStyle(
+                            color: ColorSchemeManagerClass.colorSecondary,
+                          ),
+                        ),
                         onPressed: () {},
                       ),
                     ],

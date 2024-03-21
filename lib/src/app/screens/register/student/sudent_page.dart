@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:navigations/src/app/screens/register/student/pages/register_student/pay_methods.dart';
-import 'package:navigations/src/app/screens/register/student/pages/register_student/register_responsible.dart';
-import 'package:navigations/src/app/screens/register/student/pages/register_student/register_student.dart';
 import 'package:navigations/src/theme/theme_class.dart';
 
 class StudentPage extends StatefulWidget {
@@ -12,6 +9,7 @@ class StudentPage extends StatefulWidget {
 }
 
 class _StudentPageState extends State<StudentPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,25 +30,51 @@ class _StudentPageState extends State<StudentPage> {
           child: Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: ListView.builder(
-              itemCount: 1,
+              itemCount: 30000,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Expanded(
-                    flex: 1,
-                    child: Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: ColorSchemeManagerClass.colorPrimary,
-                          width: 3.0,
+                  child: SizedBox(
+                    height: 80.0,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        elevation: const MaterialStatePropertyAll(0.0),
+                        shape: MaterialStatePropertyAll(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14.0),
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(14.0),
+                        side: MaterialStatePropertyAll(
+                          BorderSide(
+                            color: ColorSchemeManagerClass.colorPrimary,
+                            width: 3.0,
+                          ),
+                        ),
                       ),
+                      onPressed: () {},
                       child: Row(
+                        mainAxisSize: MainAxisSize.max,
                         children: [
-                          ListTile(
-                            
+                          Expanded(
+                            flex: 2,
+                            child: ListTile(
+                              leading: SizedBox(
+                                width: 100,
+                                child: Image.asset('assets/woman_image.jpg'),
+                              ),
+                              title: const Text('Monique Santos'),
+                            ),
+                          ),
+                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text('9854321874'),
+                              SizedBox(width: 20.0),
+                              Text('2º ano'),
+                              SizedBox(width: 20.0),
+                              Text(index.toString()),
+                            ],
                           )
                         ],
                       ),
