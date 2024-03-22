@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:navigations/src/app/screens/chat/chat_page.dart';
 import 'package:navigations/src/app/screens/profile/profile_page.dart';
 import 'package:navigations/src/app/screens/register/student/student_page.dart';
-import 'package:navigations/src/components/drawer/drawer_component.dart';
 import 'package:navigations/src/components/search/search_bar.dart';
 import 'package:navigations/src/theme/theme_class.dart';
 
@@ -59,25 +58,14 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
       length: 3,
       initialIndex: index,
       child: Scaffold(
-        endDrawer: DrawerComponent(
-          drawerContent: ListView(
-            children: [
-              Builder(builder: (context) {
-                return TextButton(
-                  onPressed: () {
-                    Scaffold.of(context).closeEndDrawer();
-                  },
-                  child: const Text('Pagina 2'),
-                );
-              }),
-            ],
-          ),
-        ),
         appBar: AppBar(
-          leadingWidth: 150,
+          leadingWidth: 200,
           leading: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset('assets/logo.png'),
+            padding: const EdgeInsets.all(5.0),
+            child: Image.asset(
+              'assets/acadia_logo1.png',
+              fit: BoxFit.fill,
+            ),
           ),
           centerTitle: true,
           title: MediaQuery.of(context).size.width >= 770
@@ -181,14 +169,20 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
         ),
         bottomNavigationBar: MediaQuery.of(context).size.width >= 770
             ? null
-            : const SizedBox(
+            : SizedBox(
                 height: 60,
                 child: TabBar(
-                  tabs: [
-                    Text('Perfil'),
-                    Text('Chat'),
-                    Text('Home'),
-                  ],
+                  
+                  dividerHeight: 60.0,
+                  indicatorPadding: const EdgeInsets.all(8.0),
+                  indicator: UnderlineTabIndicator(
+                    borderSide: BorderSide(
+                      color: ColorSchemeManagerClass.colorPrimary,
+                      width: 3,
+                    ),
+                    insets: const EdgeInsets.fromLTRB(50.0, 0.0, 50.0, 40.0),
+                  ),
+                  tabs: tabs,
                 ),
               ),
       ),

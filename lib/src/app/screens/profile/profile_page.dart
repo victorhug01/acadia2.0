@@ -61,7 +61,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ColorSchemeManagerClass.colorPrimary,
                                 child: CircleAvatar(
                                   radius: 85,
-                                  backgroundColor: Colors.grey[400],
+                                  backgroundColor:
+                                      ColorSchemeManagerClass.colorSecondary,
                                   backgroundImage: imageFile != null
                                       ? (FileImage(imageFile!))
                                       : null,
@@ -72,7 +73,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 right: 5,
                                 child: CircleAvatar(
                                   child: CircleAvatar(
-                                    backgroundColor: Colors.grey[200],
+                                    backgroundColor:
+                                        ColorSchemeManagerClass.colorPrimary,
                                     child: IconButton(
                                       onPressed: () {
                                         showModalBottomSheet(
@@ -158,7 +160,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                       },
                                       icon: Icon(
                                         Icons.edit,
-                                        color: ColorSchemeManagerClass.colorPrimary,
+                                        color: ColorSchemeManagerClass
+                                            .colorSecondary,
                                       ),
                                     ),
                                   ),
