@@ -59,11 +59,11 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
       initialIndex: index,
       child: Scaffold(
         appBar: AppBar(
-          leadingWidth: 200,
+          leadingWidth: 180,
           leading: Padding(
             padding: const EdgeInsets.all(5.0),
             child: Image.asset(
-              'assets/acadia_logo1.png',
+              'assets/acadia_logo.png',
               fit: BoxFit.fill,
             ),
           ),
@@ -141,7 +141,10 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
                               controller.open();
                             }
                           },
-                          child: const Text('Cadastrar'),
+                          child: const Text(
+                            'Cadastrar',
+                            style: TextStyle(color: Colors.black),
+                          ),
                         );
                       },
                     ),
@@ -172,7 +175,6 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
             : SizedBox(
                 height: 60,
                 child: TabBar(
-                  
                   dividerHeight: 60.0,
                   indicatorPadding: const EdgeInsets.all(8.0),
                   indicator: UnderlineTabIndicator(
