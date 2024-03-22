@@ -66,9 +66,6 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
                 return TextButton(
                   onPressed: () {
                     Scaffold.of(context).closeEndDrawer();
-                    setState(() {
-                      index = 1;
-                    });
                   },
                   child: const Text('Pagina 2'),
                 );
@@ -169,19 +166,7 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
                     padding: EdgeInsets.only(right: 8.0),
                     child: SearchBarWidget(),
                   )
-                : Builder(
-                    builder: (context) {
-                      return IconButton(
-                        onPressed: () {
-                          Scaffold.of(context).openEndDrawer();
-                        },
-                        icon: Icon(
-                          Icons.menu,
-                          color: ColorSchemeManagerClass.colorPrimary,
-                        ),
-                      );
-                    },
-                  ),
+                : const SizedBox.shrink(),
           ],
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(15),
@@ -191,11 +176,21 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
             ),
           ),
         ),
-        body: MediaQuery.sizeOf(context).width <= 770
-            ? TabBarView(
-                children: pages,
-              )
-            : const ProfilePage(),
+        body: TabBarView(
+          children: pages,
+        ),
+        bottomNavigationBar: MediaQuery.of(context).size.width >= 770
+            ? null
+            : const SizedBox(
+                height: 60,
+                child: TabBar(
+                  tabs: [
+                    Text('Perfil'),
+                    Text('Chat'),
+                    Text('Home'),
+                  ],
+                ),
+              ),
       ),
     );
   }
