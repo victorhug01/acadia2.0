@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DrawerComponent extends StatefulWidget {
-  const DrawerComponent({super.key});
+  final ListView drawerContent;
+
+  const DrawerComponent({super.key, required this.drawerContent});
 
   @override
   State<DrawerComponent> createState() => _DrawerComponentState();
@@ -10,6 +12,9 @@ class DrawerComponent extends StatefulWidget {
 class _DrawerComponentState extends State<DrawerComponent> {
   @override
   Widget build(BuildContext context) {
-    return const Drawer();
+    return Drawer(
+      child: widget.drawerContent,
+    );
   }
 }
+
