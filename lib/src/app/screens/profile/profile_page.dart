@@ -1,6 +1,4 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:navigations/src/app/screens/profile/components/dropzone.dart';
 import 'package:navigations/src/theme/theme_class.dart';
 
@@ -42,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: [
                         Padding(
                           padding: EdgeInsets.all(8.0),
-                          child: DropZone()
+                          child: DropZone(),
                         ),
                         Padding(
                           padding: EdgeInsets.only(top: 25.0),
