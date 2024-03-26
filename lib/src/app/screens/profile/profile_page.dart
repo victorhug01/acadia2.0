@@ -9,7 +9,13 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+
+
 class _MyHomePageState extends State<MyHomePage> {
+  static const TextStyle styletext =  TextStyle(
+    fontWeight: FontWeight.w600,
+    letterSpacing: 1.5,
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,11 +52,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           padding: EdgeInsets.only(top: 25.0),
                           child: Column(
                             children: [
-                              Text('Maria Fernanda'),
-                              Text('17 anos'),
+                              Text('Maria Fernanda',style: styletext,),
+                              Text('17 anos', style: styletext,),
                               Padding(
                                 padding: EdgeInsets.all(8.0),
-                                child: Text('Secretária'),
+                                child: Text('Secretária', style: styletext,),
                               ),
                             ],
                           ),
@@ -74,8 +80,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           padding: EdgeInsets.all(8.0),
                           child: Column(
                             children: [
-                              Text('Observações'),
-                              Text('(Pressão baixa)'),
+                              Text('Observações', style: styletext,),
+                              Text('(Pressão baixa)', style: styletext,),
                             ],
                           ),
                         ),
@@ -83,11 +89,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           padding: EdgeInsets.all(8.0),
                           child: Column(
                             children: [
-                              Text('(14) 98236 - 5478'),
+                              Text('(14) 98236 - 5478', style: styletext,),
                             ],
                           ),
                         ),
-                        Text('mariafernanda@objetivo.com'),
+                        Text('mariafernanda@objetivo.com', style: styletext,),
                       ],
                     ),
                   ),

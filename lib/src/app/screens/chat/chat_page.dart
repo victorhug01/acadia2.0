@@ -11,7 +11,9 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Colors.yellow,
+      body: Center(
+        child: Text('Em breve'),
+      ),
     );
   }
 }

@@ -32,6 +32,9 @@ final List<Tab> tabs = [
 ];
 
 class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
+  static const TextStyle styletext =  TextStyle(
+    fontWeight: FontWeight.w600,
+  );
   int index = 0;
   @override
   Widget build(BuildContext context) {
@@ -156,6 +159,7 @@ class _NavigationsTabsComponentsState extends State<NavigationsTabsComponents> {
             : SizedBox(
                 height: 60,
                 child: TabBar(
+                  labelStyle: styletext,
                   dividerHeight: 60.0,
                   indicatorPadding: const EdgeInsets.all(8.0),
                   indicator: UnderlineTabIndicator(

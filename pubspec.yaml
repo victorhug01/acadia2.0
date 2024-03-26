@@ -39,7 +39,7 @@ dependencies:
   searchbar_animation: ^0.0.4
   image_picker: ^1.0.7
   page_view_dot_indicator: ^2.3.0
-  desktop_drop: ^0.4.4
+  # super_drag_and_drop: ^0.8.10
   # window_manager: ^0.3.8
   # time_planner: ^0.1.2+1
 

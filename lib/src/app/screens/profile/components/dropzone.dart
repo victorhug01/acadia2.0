@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:desktop_drop/desktop_drop.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:navigations/src/theme/theme_class.dart';
@@ -12,7 +11,6 @@ class DropZone extends StatefulWidget {
 }
 
 class _DropZoneState extends State<DropZone> {
-  final Set<Uri> files = {};
   bool isLoading = false;
   final imagePicker = ImagePicker();
   File? imageFile;
@@ -40,12 +38,6 @@ class _DropZoneState extends State<DropZone> {
     Icon(Icons.camera_alt_outlined, color: Colors.grey[500]),
     Icon(Icons.delete_forever_outlined, color: Colors.grey[500]),
   ];
-
-  final List<XFile> _list = [];
-
-  bool dragging = false;
-
-  Offset? offset;
 
   @override
   Widget build(BuildContext context) {
@@ -112,105 +104,6 @@ class _DropZoneState extends State<DropZone> {
                                 });
                               },
                             ),
-                            Expanded(
-                              flex: 1,
-                              child: InkWell(
-                                onTap: () {
-                                  Navigator.of(context).pop();
-                                  pick(ImageSource.gallery);
-                                },
-                                child: DropTarget(
-                                  onDragDone: (detail) async {
-                                    setState(() {
-                                      _list.clear();
-                                      _list.addAll(detail.files);
-                                      isLoading = true;
-                                    });
-
-                                    debugPrint('onDragDone:');
-                                    for (final file in detail.files) {
-                                      debugPrint('  ${file.path} ${file.name}'
-                                          '  ${await file.lastModified()}'
-                                          '  ${await file.length()}'
-                                          '  ${file.mimeType}');
-                                    }
-                                    Navigator.of(context).pop();
-
-                                    await Future.delayed(
-                                        const Duration(seconds: 2));
-
-                                    //mesagem
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content:
-                                            Text('Item arrastado com sucesso!'),
-                                        duration: Duration(seconds: 2),
-                                      ),
-                                    );
-
-                                    setState(() {
-                                      final List<String> filePaths = _list
-                                          .map((file) => file.path)
-                                          .toList();
-
-                                      if (filePaths.isNotEmpty) {
-                                        imageFile = File(filePaths.first);
-                                      }
-                                      isLoading = false;
-                                    });
-                                  },
-                                  onDragUpdated: (details) {
-                                    setState(() {
-                                      offset = details.localPosition;
-                                    });
-                                  },
-                                  onDragEntered: (detail) {
-                                    setState(() {
-                                      dragging = true;
-                                      offset = detail.localPosition;
-                                    });
-                                  },
-                                  onDragExited: (detail) {
-                                    setState(() {
-                                      dragging = false;
-                                      offset = null;
-                                    });
-                                  },
-                                  child: Container(
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15.0),
-                                      border: Border.all(
-                                        color: ColorSchemeManagerClass
-                                            .colorPrimary,
-                                        width: 3,
-                                      ),
-                                    ),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Icon(
-                                          Icons.cloud_upload_outlined,
-                                          size: 60,
-                                          color: ColorSchemeManagerClass
-                                              .colorPrimary,
-                                        ),
-                                        Text(
-                                          'Arraste ou clique aqui',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              color: ColorSchemeManagerClass
-                                                  .colorPrimary),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 12),
                           ],
                         ),
                       );
